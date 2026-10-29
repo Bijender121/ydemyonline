@@ -70,6 +70,16 @@
   --shadow-xl: 0 20px 40px -8px rgba(15, 23, 42, 0.12);
 }
 
+@utility site-gutters {
+  /* Faint diagonal hatch visible beside the framed page column. */
+  background-color: var(--color-canvas);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 11px,
+    rgb(249 115 22 / 0.09) 11px 12px
+  );
+}
+
 @layer base {
   body {
     @apply bg-white font-sans text-body text-neutral-900 antialiased;

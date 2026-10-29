@@ -5,8 +5,8 @@ import { Icon, PlayCircleIcon } from "@/components/ui/icon";
 import { cn } from "@/lib/cn";
 
 export type ButtonVariant = "primary" | "secondary" | "tertiary" | "text";
-/** `sm` applies to the text variant only (12px link actions inside cards). */
-export type ButtonSize = "sm" | "md" | "lg";
+/** Text variant: `sm` 12px (in-card actions), `md` 14px, `lg`/`xl` 16px. */
+export type ButtonSize = "sm" | "md" | "lg" | "xl";
 
 const base =
   "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-400 disabled:pointer-events-none aria-disabled:pointer-events-none";
@@ -25,6 +25,15 @@ const sizes: Record<ButtonSize, string> = {
   sm: "h-11 px-3 text-body",
   md: "h-11 px-3 text-body",
   lg: "h-11 px-4 text-body-lg",
+  /** Hero call to action. */
+  xl: "h-15 px-6 text-heading-3",
+};
+
+const textSizes: Record<ButtonSize, string> = {
+  sm: "text-small",
+  md: "text-body",
+  lg: "text-body-lg",
+  xl: "text-body-lg",
 };
 
 const trailingIcons: Partial<Record<ButtonVariant, ReactNode>> = {
@@ -55,7 +64,7 @@ export function buttonClasses({
   size = "md",
   className,
 }: Pick<CommonProps, "variant" | "size" | "className">) {
-  const sizing = variant === "text" ? (size === "sm" ? "text-small" : "text-body") : sizes[size];
+  const sizing = variant === "text" ? textSizes[size] : sizes[size];
   return cn(base, variants[variant], sizing, className);
 }
 

@@ -2,6 +2,7 @@ import { cn } from "@/lib/cn";
 
 type LogoProps = {
   withWordmark?: boolean;
+  size?: "md" | "lg";
   className?: string;
 };
 
@@ -10,7 +11,7 @@ export function LogoMark({ className }: { className?: string }) {
     <svg
       viewBox="0 0 24 24"
       aria-hidden="true"
-      className={cn("size-6 text-primary-500", className)}
+      className={cn("text-primary-500", className ?? "size-6")}
     >
       <path
         fill="currentColor"
@@ -21,12 +22,17 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
-export function Logo({ withWordmark = true, className }: LogoProps) {
+export function Logo({ withWordmark = true, size = "md", className }: LogoProps) {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
-      <LogoMark />
+      <LogoMark className={size === "lg" ? "size-7 sm:size-8" : undefined} />
       {withWordmark && (
-        <span className="text-heading-3 font-semibold tracking-tight text-neutral-900">
+        <span
+          className={cn(
+            "font-semibold tracking-tight text-neutral-900",
+            size === "lg" ? "text-heading-3 sm:text-heading-2 sm:font-medium" : "text-heading-3",
+          )}
+        >
           Vertex
         </span>
       )}

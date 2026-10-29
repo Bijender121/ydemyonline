@@ -16,6 +16,8 @@ const eslintConfig = defineConfig([
     "agent/**",
     ".agents/**",
     ".claude/**",
+    // Standalone Sanity Studio workspace, linted on its own:
+    "studio/**",
   ]),
 ]);
 

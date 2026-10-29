@@ -13,11 +13,11 @@ const links = [
 export function SiteNav({ className }: { className?: string }) {
   const pathname = usePathname();
   return (
-    <nav aria-label="Main" className={cn("flex items-center gap-8 sm:gap-14", className)}>
+    <nav aria-label="Main" className={cn("flex items-center gap-4 sm:gap-16", className)}>
       <Link href="/" aria-label="Vertex home">
-        <Logo />
+        <Logo size="lg" />
       </Link>
-      <ul className="flex items-center gap-6 sm:gap-10">
+      <ul className="flex items-center gap-3 sm:gap-11">
         {links.map((link) => {
           const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
           return (
@@ -26,7 +26,7 @@ export function SiteNav({ className }: { className?: string }) {
                 href={link.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "whitespace-nowrap text-body transition-colors hover:text-primary-500",
+                  "whitespace-nowrap text-body sm:text-body-lg transition-colors hover:text-primary-500",
                   active ? "text-primary-500" : "text-neutral-900",
                 )}
               >
